@@ -64,9 +64,12 @@ Project 4 - Random Quote Generator in JavaScript
   citation: 'Star Wars - A New Hope',
   year: 1977
 }, {
-  quote: 'Don’t be too proud of this technological terror you’ve constructed. The ability to destroy a planet is insignificant next to the power of the Force.',
-	source: 'Darth Vader',
-
+  quote: 'I’ll never turn to the dark side. You’ve failed, your highness. I am a Jedi, like my father before me.',
+	source: 'Luke Skywalker',
+}, {
+	quote: 'You can’t stop the change, any more than you can stop the suns from setting.',
+	source: 'Shmi Skywalker',
+  citation: 'Star Wars - The Phantom Menace',
 }];
 
 /***
@@ -101,33 +104,29 @@ function getRandomQuote() {
 
 function printQuote () {
 
-const pullQuote = getRandomQuote(quotes);
+  const pullQuote = getRandomQuote(quotes);
+  quote = `<p class="quote">${pullQuote.quote}</p>
+          <p class="source">${pullQuote.source}</p>`;
 
+  if (pullQuote.citation ) {
+    quote = `<p class="quote">${pullQuote.quote}</p>
+    <p class="source">${pullQuote.source}
+    <span class="citation">${pullQuote.citation}</span>
+    </p>`
+  }
 
-if (quotes == pullQuote.citation && pullQuote.year ) {
+  if (pullQuote.year) {
+    quote = `<p class="quote">${pullQuote.quote}</p>
+    <p class="source">${pullQuote.source}
+    <span class="citation">${pullQuote.citation}</span>
+    <span class="year">${pullQuote.year}</span>
+    </p>`
+  }
   
-quote = `<p class="quote">${pullQuote.quote}</p>
-  //   <p class="source">${pullQuote.source}
-  //   <span class="citation">${pullQuote.citation}</span>
-  //   <span class="year">${pullQuote.year}</span>
-  //   </p>`;
+  document.getElementById('quote-box').innerHTML = quote;
+} 
+//Declare quote variable and set it to the quote and source paragraph tags.
 
-} else {
-  
-quote = `<p class="quote">${pullQuote.quote}</p>
-         <p class="source">${pullQuote.source}</p>`;
-
-}
-
-// quote = `<p class="quote">${pullQuote.quote}</p>
-//   <p class="source">${pullQuote.source}
-//   <span class="citation">${pullQuote.citation}</span>
-//   <span class="year">${pullQuote.year}</span>
-//   </p>`;
-
-
-document.getElementById('quote-box').innerHTML = quote;
-}
 
 /***
  * click event listener for the print quote button
