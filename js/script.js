@@ -17,12 +17,14 @@ Project 4 - Random Quote Generator in JavaScript
 	quote: 'Help me Obi-Wan Kenobi. Youre my only hope.',
 	source: 'Leia Organa',
   citation: 'Star Wars - A New Hope',
-  year: 1977
+  year: 1977,
+  tag: 'queen'
 }, {
 	quote: 'Why, you stuck-up, half-witted, scruffy-looking nerf herder!',
 	source: 'Leia Organa',
   citation: 'Star Wars - The Empire Strikes Back',
-  year: 1980
+  year: 1980,
+  tag: 'queen'
 }, {
 	quote: 'Your focus determines your reality.',
 	source: 'Qui-Gon Jinn',
@@ -57,7 +59,8 @@ Project 4 - Random Quote Generator in JavaScript
 	quote: 'Id just as soon kiss a Wookiee',
 	source: 'Leia Organa',
   citation: 'Star Wars - The Empire Strikes Back',
-  year: 1980
+  year: 1980,
+  tag: 'queen'
 }, {
 	quote: 'It’s the ship that made the Kessel run in less than twelve parsecs.',
 	source: 'Han Solo',
@@ -102,6 +105,8 @@ function getRandomQuote() {
  * 
  ***/
 
+// setInterval(printQuote(){ alert("Hello"); }, 3000);
+
 function printQuote () {
 
   const pullQuote = getRandomQuote(quotes);
@@ -122,10 +127,19 @@ function printQuote () {
     <span class="year">${pullQuote.year}</span>
     </p>`
   }
+
+  if (pullQuote.tag) {
+    quote = `<p class="quote">${pullQuote.quote}</p>
+    <p class="source">${pullQuote.source}
+    <span class="tag">${pullQuote.tag}</span>
+    <span class="citation">${pullQuote.citation}</span>
+    <span class="year">${pullQuote.year}</span>
+    </p>`
+  }
   
   document.getElementById('quote-box').innerHTML = quote;
 } 
-//Declare quote variable and set it to the quote and source paragraph tags.
+
 
 
 /***
